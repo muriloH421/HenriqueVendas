@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AppVendas.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Cadastro de Categorias";
+}
+
+<h1 class="display-5 mt-3">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-light mt-3">Nova Categoria</a>
+</p>
+<table class="table table-dark table-striped text-decoration-none">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoriaNome)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaNome)
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Edit" asp-route-id="@item.CategoriaId"><svg bootstrap-icon="PencilFill" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Details" asp-route-id="@item.CategoriaId"><svg bootstrap-icon="CardList" width="14" height="14" aria-label="Detalhes"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Delete" asp-route-id="@item.CategoriaId"><svg bootstrap-icon="Trash" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

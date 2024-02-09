@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AppVendas.Models.Produto>
+
+@{
+    ViewData["Title"] = "Cadastro de Produtos";
+}
+
+<h1 class="display-5 mt-3">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-light">Novo Produto</a>
+</p>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estoque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estoque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.CategoriaNome)
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Edit" asp-route-id="@item.ProdutoId"><svg bootstrap-icon="PencilFill" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Details" asp-route-id="@item.ProdutoId"><svg bootstrap-icon="CardList" width="14" height="14" aria-label="Detalhes"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Delete" asp-route-id="@item.ProdutoId"><svg bootstrap-icon="Trash" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

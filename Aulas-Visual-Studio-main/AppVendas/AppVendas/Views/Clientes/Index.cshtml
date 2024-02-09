@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AppVendas.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Cadastro de Clientes";
+}
+
+<h1 class="display-5 mt-3">@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-light mt-3">Novo Cliente</a>
+</p>
+<table class="table table-dark table-striped text-decoration-none">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ativo)
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Edit" asp-route-id="@item.ClienteId"><svg bootstrap-icon="PencilFill" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Details" asp-route-id="@item.ClienteId"><svg bootstrap-icon="CardList" width="14" height="14" aria-label="Detalhes"></svg></a>
+                </td>
+                <td class="text-end">
+                    <a class="text-light" asp-action="Delete" asp-route-id="@item.ClienteId"><svg bootstrap-icon="Trash" width="14" height="14" aria-label="Editar"></svg></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
